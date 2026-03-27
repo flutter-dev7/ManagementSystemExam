@@ -89,4 +89,12 @@ public class SaleController : ControllerBase
 
         return Ok(reports);
     }
+
+    [HttpGet("dashboard/statistics")]
+    public async Task<IActionResult> GetDashboardStatisticsAsync()
+    {
+        var dashboard = await _service.GetDashboardStatisticsAsync();
+
+        return Ok(dashboard);
+    }
 }

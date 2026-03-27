@@ -4496,3 +4496,133 @@ ORDER BY s2."Id", s2."Id0", s2."Id1", s0."Id"
 2026-03-27 19:55:19.018 +05:00 [INF] Executed endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
 2026-03-27 19:55:19.021 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/products/details/1 - 200 null application/json; charset=utf-8 215.4757ms
 2026-03-27 20:00:56.526 +05:00 [INF] Application is shutting down...
+2026-03-27 20:11:31.002 +05:00 [INF] Now listening on: http://localhost:5252
+2026-03-27 20:11:31.029 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-27 20:11:31.030 +05:00 [INF] Hosting environment: Development
+2026-03-27 20:11:31.032 +05:00 [INF] Content root path: C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi
+2026-03-27 20:11:31.054 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.html - null null
+2026-03-27 20:11:31.133 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.html - 200 null text/html;charset=utf-8 79.1732ms
+2026-03-27 20:11:31.152 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - null null
+2026-03-27 20:11:31.152 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.css - null null
+2026-03-27 20:11:31.152 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - null null
+2026-03-27 20:11:31.152 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - null null
+2026-03-27 20:11:31.153 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.js - null null
+2026-03-27 20:11:31.172 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - 304 null null 20.3866ms
+2026-03-27 20:11:31.172 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.css - 304 null null 19.5209ms
+2026-03-27 20:11:31.176 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - 304 null null 23.3473ms
+2026-03-27 20:11:31.187 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - 304 null null 34.9971ms
+2026-03-27 20:11:31.192 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.js - 304 null null 39.5438ms
+2026-03-27 20:11:31.237 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - null null
+2026-03-27 20:11:31.249 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - null null
+2026-03-27 20:11:31.253 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - 304 null null 4.6906ms
+2026-03-27 20:11:31.310 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 72.9933ms
+2026-03-27 20:11:39.051 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/suppliers/with-products - null null
+2026-03-27 20:11:39.060 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-03-27 20:11:39.067 +05:00 [INF] Executing endpoint 'WebApi.Controllers.SupplierController.GetWithProducts (WebApi)'
+2026-03-27 20:11:39.114 +05:00 [INF] Route matched with {action = "GetWithProducts", controller = "Supplier"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetWithProducts() on controller WebApi.Controllers.SupplierController (WebApi).
+2026-03-27 20:11:39.354 +05:00 [INF] Start in GetWithProducts
+2026-03-27 20:11:41.606 +05:00 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", p."Name", p."Id"
+FROM "Suppliers" AS s
+LEFT JOIN "Products" AS p ON s."Id" = p."SupplierId"
+ORDER BY s."Id"
+2026-03-27 20:11:41.772 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.DTOs.Suppliers.GetWithProductDto, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-27 20:11:41.789 +05:00 [INF] Executed action WebApi.Controllers.SupplierController.GetWithProducts (WebApi) in 2665.9409ms
+2026-03-27 20:11:41.793 +05:00 [INF] Executed endpoint 'WebApi.Controllers.SupplierController.GetWithProducts (WebApi)'
+2026-03-27 20:11:41.804 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/suppliers/with-products - 200 null application/json; charset=utf-8 2752.7464ms
+2026-03-27 20:19:22.774 +05:00 [INF] Application is shutting down...
+2026-03-27 20:19:30.556 +05:00 [INF] Now listening on: http://localhost:5252
+2026-03-27 20:19:30.580 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-27 20:19:30.582 +05:00 [INF] Hosting environment: Development
+2026-03-27 20:19:30.583 +05:00 [INF] Content root path: C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi
+2026-03-27 20:19:30.653 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.html - null null
+2026-03-27 20:19:30.708 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.html - 304 null null 55.5386ms
+2026-03-27 20:19:30.723 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.css - null null
+2026-03-27 20:19:30.723 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - null null
+2026-03-27 20:19:30.723 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - null null
+2026-03-27 20:19:30.723 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - null null
+2026-03-27 20:19:30.723 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.js - null null
+2026-03-27 20:19:30.734 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - 304 null null 12.0081ms
+2026-03-27 20:19:30.734 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.css - 304 null null 12.0104ms
+2026-03-27 20:19:30.741 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - 304 null null 18.4053ms
+2026-03-27 20:19:30.741 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - 304 null null 18.3413ms
+2026-03-27 20:19:30.745 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.js - 304 null null 21.793ms
+2026-03-27 20:19:30.783 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - null null
+2026-03-27 20:19:30.785 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - null null
+2026-03-27 20:19:30.788 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - 304 null null 3.6002ms
+2026-03-27 20:19:30.852 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 69.0669ms
+2026-03-27 20:19:43.545 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/suppliers/with-products - null null
+2026-03-27 20:19:43.559 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-03-27 20:19:43.564 +05:00 [INF] Executing endpoint 'WebApi.Controllers.SupplierController.GetWithProducts (WebApi)'
+2026-03-27 20:19:43.596 +05:00 [INF] Route matched with {action = "GetWithProducts", controller = "Supplier"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetWithProducts() on controller WebApi.Controllers.SupplierController (WebApi).
+2026-03-27 20:19:43.782 +05:00 [INF] Start in GetWithProducts
+2026-03-27 20:19:45.668 +05:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", p."Name", p."Id"
+FROM "Suppliers" AS s
+LEFT JOIN "Products" AS p ON s."Id" = p."SupplierId"
+ORDER BY s."Id"
+2026-03-27 20:19:45.790 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.DTOs.Suppliers.GetWithProductDto, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-27 20:19:45.822 +05:00 [INF] Executed action WebApi.Controllers.SupplierController.GetWithProducts (WebApi) in 2216.5162ms
+2026-03-27 20:19:45.826 +05:00 [INF] Executed endpoint 'WebApi.Controllers.SupplierController.GetWithProducts (WebApi)'
+2026-03-27 20:19:45.842 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/suppliers/with-products - 200 null application/json; charset=utf-8 2296.3996ms
+2026-03-27 20:20:10.534 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/sales/statistics - null null
+2026-03-27 20:20:10.541 +05:00 [INF] Executing endpoint 'WebApi.Controllers.SaleController.GetDashboardStatisticsAsync (WebApi)'
+2026-03-27 20:20:10.560 +05:00 [INF] Route matched with {action = "GetDashboardStatistics", controller = "Sale"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDashboardStatisticsAsync() on controller WebApi.Controllers.SaleController (WebApi).
+2026-03-27 20:20:10.575 +05:00 [INF] Start in GetDashboardStatisticsAsync
+2026-03-27 20:20:10.694 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Products" AS p
+2026-03-27 20:20:10.720 +05:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Sales" AS s
+2026-03-27 20:20:10.807 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(sum(s."QuantitySold"::numeric * p."Price"), 0.0)
+FROM "Sales" AS s
+INNER JOIN "Products" AS p ON s."ProductId" = p."Id"
+2026-03-27 20:20:10.830 +05:00 [INF] Finish in GetDashboardStatisticsAsync
+2026-03-27 20:20:10.836 +05:00 [INF] Executing OkObjectResult, writing value of type 'Domain.DTOs.Sales.GetDashboardStatisticsDto'.
+2026-03-27 20:20:10.858 +05:00 [INF] Executed action WebApi.Controllers.SaleController.GetDashboardStatisticsAsync (WebApi) in 292.9598ms
+2026-03-27 20:20:10.863 +05:00 [INF] Executed endpoint 'WebApi.Controllers.SaleController.GetDashboardStatisticsAsync (WebApi)'
+2026-03-27 20:20:10.868 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/sales/statistics - 200 null application/json; charset=utf-8 333.2777ms
+2026-03-27 20:20:29.645 +05:00 [INF] Application is shutting down...
+2026-03-27 20:20:35.065 +05:00 [INF] Now listening on: http://localhost:5252
+2026-03-27 20:20:35.097 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-27 20:20:35.098 +05:00 [INF] Hosting environment: Development
+2026-03-27 20:20:35.100 +05:00 [INF] Content root path: C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi
+2026-03-27 20:20:35.276 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.html - null null
+2026-03-27 20:20:35.326 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.html - 304 null null 50.5462ms
+2026-03-27 20:20:35.338 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - null null
+2026-03-27 20:20:35.339 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.css - null null
+2026-03-27 20:20:35.339 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - null null
+2026-03-27 20:20:35.340 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - null null
+2026-03-27 20:20:35.340 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.js - null null
+2026-03-27 20:20:35.352 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.css - 304 null null 12.8289ms
+2026-03-27 20:20:35.352 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - 304 null null 14.2688ms
+2026-03-27 20:20:35.358 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - 304 null null 19.1754ms
+2026-03-27 20:20:35.358 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - 304 null null 18.8113ms
+2026-03-27 20:20:35.361 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.js - 304 null null 21.5663ms
+2026-03-27 20:20:35.400 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - null null
+2026-03-27 20:20:35.402 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - null null
+2026-03-27 20:20:35.405 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - 304 null null 3.3505ms
+2026-03-27 20:20:35.465 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 65.6118ms
+2026-03-27 20:20:42.590 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/sales/dashboard/statistics - null null
+2026-03-27 20:20:42.602 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-03-27 20:20:42.615 +05:00 [INF] Executing endpoint 'WebApi.Controllers.SaleController.GetDashboardStatisticsAsync (WebApi)'
+2026-03-27 20:20:42.697 +05:00 [INF] Route matched with {action = "GetDashboardStatistics", controller = "Sale"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDashboardStatisticsAsync() on controller WebApi.Controllers.SaleController (WebApi).
+2026-03-27 20:20:42.913 +05:00 [INF] Start in GetDashboardStatisticsAsync
+2026-03-27 20:20:44.914 +05:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Products" AS p
+2026-03-27 20:20:45.074 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT count(*)::int
+FROM "Sales" AS s
+2026-03-27 20:20:45.225 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(sum(s."QuantitySold"::numeric * p."Price"), 0.0)
+FROM "Sales" AS s
+INNER JOIN "Products" AS p ON s."ProductId" = p."Id"
+2026-03-27 20:20:45.239 +05:00 [INF] Finish in GetDashboardStatisticsAsync
+2026-03-27 20:20:45.260 +05:00 [INF] Executing OkObjectResult, writing value of type 'Domain.DTOs.Sales.GetDashboardStatisticsDto'.
+2026-03-27 20:20:45.299 +05:00 [INF] Executed action WebApi.Controllers.SaleController.GetDashboardStatisticsAsync (WebApi) in 2591.375ms
+2026-03-27 20:20:45.304 +05:00 [INF] Executed endpoint 'WebApi.Controllers.SaleController.GetDashboardStatisticsAsync (WebApi)'
+2026-03-27 20:20:45.316 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/sales/dashboard/statistics - 200 null application/json; charset=utf-8 2726.2166ms
+2026-03-27 20:20:57.900 +05:00 [INF] Application is shutting down...

@@ -14,4 +14,5 @@ public interface ISaleService
     Task<IEnumerable<GetSaleByDateDto>> GetSalesByDateAsync(DateTime fromDate, DateTime toDate);
     Task<IEnumerable<GetTopProductDto>> GetTopProductsAsync();
     Task<IEnumerable<GetDailyRevenueDto>> GetDailyRevenueAsync();
+    Task<GetDashboardStatisticsDto> GetDashboardStatisticsAsync();
 }

@@ -64,4 +64,12 @@ public class SupplierController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpGet("with-products")]
+    public async Task<IActionResult> GetWithProducts()
+    {
+        var suppliers = await _service.GetWithProducts();
+
+        return Ok(suppliers);
+    }
 }

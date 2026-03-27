@@ -226,4 +226,24 @@ public class SaleService : ISaleService
 
         return reports;
     }
+
+    public async Task<GetDashboardStatisticsDto> GetDashboardStatisticsAsync()
+    {
+        _logger.LogInformation("Start in GetDashboardStatisticsAsync");
+
+        var totalProducts = await _context.Products.CountAsync();
+
+        var totalSales = await _context.Sales.CountAsync();
+
+        var result = new GetDashboardStatisticsDto
+        {
+            TotalProducts = totalProducts,
+            TotalSales = totalSales,
+            TotalRevenue = await _context.Sales
+            .SumAsync(s => s.QuantitySold * s.Product.Price)
+        };
+
+        _logger.LogInformation("Finish in GetDashboardStatisticsAsync");
+        return result;
+    }
 }

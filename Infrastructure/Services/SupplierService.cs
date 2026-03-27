@@ -149,4 +149,18 @@ public class SupplierService : ISupplierService
         }
     }
 
+    public async Task<List<GetWithProductDto>> GetWithProducts()
+    {
+        _logger.LogInformation("Start in GetWithProducts");
+
+        var suppliers = await _context.Suppliers
+        .Select(s => new GetWithProductDto
+        {
+            SupplierId = s.Id,
+            SupplierName = s.Name,
+            Products = s.Products.Select(p => p.Name).ToList()
+        }).ToListAsync();
+
+        return suppliers;
+    }
 }
