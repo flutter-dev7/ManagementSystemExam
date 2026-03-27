@@ -69,7 +69,7 @@ public class SaleController : ControllerBase
     [HttpGet("by-date/fromdate={fromDate:datetime}&toDate={toDate:datetime}")]
     public async Task<IActionResult> GetSalesByDate(DateTime fromDate, DateTime toDate)
     {
-        var sales = await _service.GetSalesByDate(fromDate, toDate);
+        var sales = await _service.GetSalesByDateAsync(fromDate, toDate);
 
         return Ok(sales);
     }
@@ -77,8 +77,16 @@ public class SaleController : ControllerBase
     [HttpGet("top-products")]
     public  async Task<IActionResult> GetTopProducts()
     {
-        var sales = await _service.GetTopProducts();
+        var sales = await _service.GetTopProductsAsync();
 
         return Ok(sales);
+    }
+
+    [HttpGet("daily-revenue")]
+    public async Task<IActionResult> GetDailyRevenueAsync()
+    {
+        var reports = await _service.GetDailyRevenueAsync();
+
+        return Ok(reports);
     }
 }

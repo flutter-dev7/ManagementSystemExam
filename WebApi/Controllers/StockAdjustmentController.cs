@@ -16,7 +16,7 @@ public class StockAdjustmentController : ControllerBase
         _service = service;
     }
 
-     [HttpGet]
+    [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
         var adjustments = await _service.GetAllStockAdjustmentsAsync();
@@ -63,5 +63,13 @@ public class StockAdjustmentController : ControllerBase
             return NotFound();
 
         return NoContent();
+    }
+
+    [HttpGet("history/productId={productId:int}")]
+    public async Task<IActionResult> GetStockAdjustmentsHistory(int productId)
+    {
+        var adjustments = await _service.GetStockAdjustmentsHistory(productId);
+
+        return Ok(adjustments);
     }
 }

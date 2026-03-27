@@ -1,4 +1,5 @@
 using System;
+using Domain.DTOs.Products;
 using Domain.DTOs.StockAdjustments;
 using Domain.Entities;
 using Infrastructure.Data;
@@ -169,5 +170,21 @@ public class StockAdjustmentService : IStockAdjustmentService
             _logger.LogError(ex, "Error in DeleteStockAdjuetment with Id = {Id}", id);
             throw;
         }
+    }
+
+    public async Task<IEnumerable<GetStockAdjustmentHistoryDto>> GetStockAdjustmentsHistory(int productId)
+    {
+        _logger.LogInformation("Start in GetStockAdjustmentsHistory");
+
+        var adjustments = await _context.StockAdjustments
+        .Where(st => st.ProductId == productId)
+        .Select(s => new GetStockAdjustmentHistoryDto
+        {
+            AdjustmentDate = s.AdjustmentDate,
+            Amount = s.AdjustmentAmount,
+            Reason = s.Reason
+        }).ToListAsync();
+
+        return adjustments;
     }
 }

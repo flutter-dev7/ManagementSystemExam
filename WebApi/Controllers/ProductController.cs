@@ -80,4 +80,15 @@ public class ProductController : ControllerBase
 
         return Ok(product);
     }
+
+    [HttpGet("details/{id:int}")]
+    public async Task<IActionResult> GetProductsDetails(int id)
+    {
+        var product = await _service.GetProductsDetails(id);
+
+        if(product == null)
+            return NotFound();
+
+        return Ok(product);
+    }
 }

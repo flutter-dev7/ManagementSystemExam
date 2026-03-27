@@ -4,6 +4,7 @@ using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Core;
+using WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();

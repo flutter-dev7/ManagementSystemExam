@@ -11,6 +11,7 @@ public interface ISaleService
     Task<bool> UpdateSaleAsync(int id, UpdateSaleDto request);
     Task<bool> DeleteSaleAsync(int id);
 
-    Task<IEnumerable<GetSaleByDateDto>> GetSalesByDate(DateTime fromDate, DateTime toDate);
-    Task<IEnumerable<GetTopProductDto>> GetTopProducts();
+    Task<IEnumerable<GetSaleByDateDto>> GetSalesByDateAsync(DateTime fromDate, DateTime toDate);
+    Task<IEnumerable<GetTopProductDto>> GetTopProductsAsync();
+    Task<IEnumerable<GetDailyRevenueDto>> GetDailyRevenueAsync();
 }

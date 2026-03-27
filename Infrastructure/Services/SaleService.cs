@@ -172,9 +172,12 @@ public class SaleService : ISaleService
         }
     }
 
-    public async Task<IEnumerable<GetSaleByDateDto>> GetSalesByDate(DateTime fromDate, DateTime toDate)
+    public async Task<IEnumerable<GetSaleByDateDto>> GetSalesByDateAsync(DateTime fromDate, DateTime toDate)
     {
         _logger.LogInformation("Start in GetSalesByDate from {fromDate} to {toDate}", fromDate, toDate);
+
+        fromDate = DateTime.SpecifyKind(fromDate, DateTimeKind.Utc);
+        toDate = DateTime.SpecifyKind(toDate, DateTimeKind.Utc);
 
         var sales = await _context.Sales
         .Where(s => s.SaleDate >= fromDate && s.SaleDate <= toDate)
@@ -190,7 +193,7 @@ public class SaleService : ISaleService
         return sales;
     }
 
-    public async Task<IEnumerable<GetTopProductDto>> GetTopProducts()
+    public async Task<IEnumerable<GetTopProductDto>> GetTopProductsAsync()
     {
         _logger.LogInformation("Start in GetTopProducts");
 
@@ -205,5 +208,22 @@ public class SaleService : ISaleService
         .ToListAsync();
 
         return sales;
+    }
+
+    public async Task<IEnumerable<GetDailyRevenueDto>> GetDailyRevenueAsync()
+    {
+        _logger.LogInformation("Start in GetDailyRevenueAsync");
+
+        var fromDate = DateTime.UtcNow.AddDays(-7);
+
+        var reports = await _context.Sales
+        .GroupBy(s => s.SaleDate.Date)
+        .Select(g => new GetDailyRevenueDto
+        {
+            Date = g.Key,
+            Revenue = g.Sum(x => x.QuantitySold * x.Product.Price)
+        }).OrderBy(x => x.Date).ToListAsync();
+
+        return reports;
     }
 }

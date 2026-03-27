@@ -13,4 +13,5 @@ public interface IProductService
 
     Task<List<GetProductLowStock>> GetProductsLowStock();
     Task<GetProductStatistic> GetProductsStatistics();
+    Task<GetProductDetailDto> GetProductsDetails(int id);
 }

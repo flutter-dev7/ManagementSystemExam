@@ -1,5 +1,7 @@
 using System;
 using Domain.DTOs.Products;
+using Domain.DTOs.Sales;
+using Domain.DTOs.StockAdjustments;
 using Domain.Entities;
 using Infrastructure.Data;
 using Infrastructure.Interfaces;
@@ -233,5 +235,43 @@ public class ProductService : IProductService
 
         _logger.LogInformation("Finish in GetProductsStatistics");
         return product;
+    }
+
+    public async Task<GetProductDetailDto> GetProductsDetails(int id)
+    {
+        _logger.LogInformation("Start in GetProductsDetails");
+
+        var product = await _context.Products
+        .Include(p => p.Category)
+        .Include(p => p.Sales)
+        .Include(p => p.Supplier)
+        .Include(p => p.StockAdjustments)
+        .FirstOrDefaultAsync(p => p.Id == id);
+
+        if (product == null)
+            throw new KeyNotFoundException("Product not found");
+
+        var res = new GetProductDetailDto
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Price = product.Price,
+            QuantityInStock = product.QuantityInStock,
+            Category = product.Category.Name,
+            Supplier = product.Supplier.Name,
+            Sales = product.Sales.Select(s => new GetSaleInProductDto
+            {
+                Quantity = s.QuantitySold,
+                Date = s.SaleDate
+            }).ToList(),
+            Adjustments = product.StockAdjustments.Select(s => new GetStockAdjustmentHistoryDto
+            {
+                Amount = s.AdjustmentAmount,
+                AdjustmentDate = s.AdjustmentDate,
+                Reason = s.Reason
+            }).ToList()
+        };
+
+        return res;
     }
 }

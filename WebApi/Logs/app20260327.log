@@ -4063,3 +4063,436 @@ ORDER BY COALESCE(sum(s."QuantitySold"), 0)::int DESC
 2026-03-27 18:09:10.686 +05:00 [INF] Executed endpoint 'WebApi.Controllers.SaleController.GetTopProducts (WebApi)'
 2026-03-27 18:09:10.706 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/sales/top-products - 200 null application/json; charset=utf-8 2561.2386ms
 2026-03-27 18:09:25.763 +05:00 [INF] Application is shutting down...
+2026-03-27 18:41:01.186 +05:00 [INF] Now listening on: http://localhost:5252
+2026-03-27 18:41:01.210 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-27 18:41:01.210 +05:00 [INF] Hosting environment: Development
+2026-03-27 18:41:01.211 +05:00 [INF] Content root path: C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi
+2026-03-27 18:41:03.749 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/sales/by-date/fromdate=2024-01-01&toDate=2026-05-05 - null null
+2026-03-27 18:41:04.203 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-03-27 18:41:04.356 +05:00 [INF] Executing endpoint 'WebApi.Controllers.SaleController.GetSalesByDate (WebApi)'
+2026-03-27 18:41:04.471 +05:00 [INF] Route matched with {action = "GetSalesByDate", controller = "Sale"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSalesByDate(System.DateTime, System.DateTime) on controller WebApi.Controllers.SaleController (WebApi).
+2026-03-27 18:41:05.225 +05:00 [INF] Start in GetSalesByDate from "2024-01-01T00:00:00.0000000" to "2026-05-05T00:00:00.0000000"
+2026-03-27 18:41:07.281 +05:00 [ERR] Failed executing DbCommand (60ms) [Parameters=[@fromDate='?' (DbType = DateTime), @toDate='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id" AS "SaleId", p."Name" AS "ProductName", s."QuantitySold", s."SaleDate"
+FROM "Sales" AS s
+INNER JOIN "Products" AS p ON s."ProductId" = p."Id"
+WHERE s."SaleDate" >= @fromDate AND s."SaleDate" <= @toDate
+2026-03-27 18:41:07.333 +05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Data.AppDbContext'.
+System.ArgumentException: Cannot write DateTime with Kind=Unspecified to PostgreSQL type 'timestamp with time zone', only UTC is supported. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options, IDbTypeResolver dbTypeResolver)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(ReloadableState reloadableState, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.ArgumentException: Cannot write DateTime with Kind=Unspecified to PostgreSQL type 'timestamp with time zone', only UTC is supported. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options, IDbTypeResolver dbTypeResolver)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(ReloadableState reloadableState, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2026-03-27 18:41:07.372 +05:00 [INF] Executed action WebApi.Controllers.SaleController.GetSalesByDate (WebApi) in 2372.4693ms
+2026-03-27 18:41:07.384 +05:00 [INF] Executed endpoint 'WebApi.Controllers.SaleController.GetSalesByDate (WebApi)'
+2026-03-27 18:41:07.392 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: Cannot write DateTime with Kind=Unspecified to PostgreSQL type 'timestamp with time zone', only UTC is supported. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options, IDbTypeResolver dbTypeResolver)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(ReloadableState reloadableState, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Infrastructure.Services.SaleService.GetSalesByDate(DateTime fromDate, DateTime toDate) in C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\Infrastructure\Services\SaleService.cs:line 179
+   at WebApi.Controllers.SaleController.GetSalesByDate(DateTime fromDate, DateTime toDate) in C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi\Controllers\SaleController.cs:line 72
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-03-27 18:41:07.462 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/sales/by-date/fromdate=2024-01-01&toDate=2026-05-05 - 500 null text/plain; charset=utf-8 3718.08ms
+2026-03-27 18:43:30.716 +05:00 [INF] Application is shutting down...
+2026-03-27 18:43:36.138 +05:00 [INF] Now listening on: http://localhost:5252
+2026-03-27 18:43:36.161 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-27 18:43:36.162 +05:00 [INF] Hosting environment: Development
+2026-03-27 18:43:36.163 +05:00 [INF] Content root path: C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi
+2026-03-27 18:43:48.279 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/sales/by-date/fromdate=2024-01-01&toDate=2026-05-05 - null null
+2026-03-27 18:43:48.416 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-03-27 18:43:48.421 +05:00 [INF] Executing endpoint 'WebApi.Controllers.SaleController.GetSalesByDate (WebApi)'
+2026-03-27 18:43:48.490 +05:00 [INF] Route matched with {action = "GetSalesByDate", controller = "Sale"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSalesByDate(System.DateTime, System.DateTime) on controller WebApi.Controllers.SaleController (WebApi).
+2026-03-27 18:43:48.693 +05:00 [INF] Start in GetSalesByDate from "2024-01-01T00:00:00.0000000" to "2026-05-05T00:00:00.0000000"
+2026-03-27 18:43:50.999 +05:00 [INF] Executed DbCommand (145ms) [Parameters=[@fromDate='?' (DbType = DateTime), @toDate='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id" AS "SaleId", p."Name" AS "ProductName", s."QuantitySold", s."SaleDate"
+FROM "Sales" AS s
+INNER JOIN "Products" AS p ON s."ProductId" = p."Id"
+WHERE s."SaleDate" >= @fromDate AND s."SaleDate" <= @toDate
+2026-03-27 18:43:51.104 +05:00 [INF] Finish in GetSalesByDate from "2024-01-01T00:00:00.0000000Z" to "2026-05-05T00:00:00.0000000Z"
+2026-03-27 18:43:51.124 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.DTOs.Sales.GetSaleByDateDto, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-27 18:43:51.205 +05:00 [INF] Executed action WebApi.Controllers.SaleController.GetSalesByDate (WebApi) in 2704.8689ms
+2026-03-27 18:43:51.215 +05:00 [INF] Executed endpoint 'WebApi.Controllers.SaleController.GetSalesByDate (WebApi)'
+2026-03-27 18:43:51.236 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/sales/by-date/fromdate=2024-01-01&toDate=2026-05-05 - 200 null application/json; charset=utf-8 2959.3212ms
+2026-03-27 19:09:50.479 +05:00 [INF] Application is shutting down...
+2026-03-27 19:10:03.650 +05:00 [INF] Now listening on: http://localhost:5252
+2026-03-27 19:10:03.675 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-27 19:10:03.676 +05:00 [INF] Hosting environment: Development
+2026-03-27 19:10:03.676 +05:00 [INF] Content root path: C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi
+2026-03-27 19:10:03.826 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.html - null null
+2026-03-27 19:10:03.877 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.html - 304 null null 51.6855ms
+2026-03-27 19:10:03.891 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - null null
+2026-03-27 19:10:03.896 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.css - null null
+2026-03-27 19:10:03.896 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - null null
+2026-03-27 19:10:03.901 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - 304 null null 10.5372ms
+2026-03-27 19:10:03.901 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.css - 304 null null 4.9771ms
+2026-03-27 19:10:03.903 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - 304 null null 7.1347ms
+2026-03-27 19:10:03.906 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - null null
+2026-03-27 19:10:03.912 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.js - null null
+2026-03-27 19:10:03.913 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - 304 null null 6.7397ms
+2026-03-27 19:10:03.914 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.js - 304 null null 1.8492ms
+2026-03-27 19:10:04.028 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - null null
+2026-03-27 19:10:04.052 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - null null
+2026-03-27 19:10:04.054 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - 304 null null 2.2533ms
+2026-03-27 19:10:04.102 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 74.5554ms
+2026-03-27 19:10:10.994 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/sales/daily-revenue - null null
+2026-03-27 19:10:10.998 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-03-27 19:10:11.000 +05:00 [INF] Executing endpoint 'WebApi.Controllers.SaleController.GetDailyRevenueAsync (WebApi)'
+2026-03-27 19:10:11.026 +05:00 [INF] Route matched with {action = "GetDailyRevenue", controller = "Sale"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDailyRevenueAsync() on controller WebApi.Controllers.SaleController (WebApi).
+2026-03-27 19:10:11.258 +05:00 [INF] Start in GetDailyRevenueAsync
+2026-03-27 19:10:13.322 +05:00 [INF] Executed DbCommand (111ms) [Parameters=[@fromDate='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT s0."Key" AS "Date", (
+    SELECT COALESCE(sum(s1."QuantitySold"::numeric * p."Price"), 0.0)
+    FROM (
+        SELECT s2."ProductId", s2."QuantitySold", date_trunc('day', s2."SaleDate", 'UTC') AS "Key"
+        FROM "Sales" AS s2
+        WHERE s2."SaleDate" >= @fromDate
+    ) AS s1
+    INNER JOIN "Products" AS p ON s1."ProductId" = p."Id"
+    WHERE s0."Key" = s1."Key" OR (s0."Key" IS NULL AND s1."Key" IS NULL)) AS "Revenue"
+FROM (
+    SELECT date_trunc('day', s."SaleDate", 'UTC') AS "Key"
+    FROM "Sales" AS s
+    WHERE s."SaleDate" >= @fromDate
+) AS s0
+GROUP BY s0."Key"
+ORDER BY s0."Key"
+2026-03-27 19:10:13.380 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.DTOs.Sales.GetDailyRevenueDto, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-27 19:10:13.421 +05:00 [INF] Executed action WebApi.Controllers.SaleController.GetDailyRevenueAsync (WebApi) in 2387.3058ms
+2026-03-27 19:10:13.426 +05:00 [INF] Executed endpoint 'WebApi.Controllers.SaleController.GetDailyRevenueAsync (WebApi)'
+2026-03-27 19:10:13.444 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/sales/daily-revenue - 200 null application/json; charset=utf-8 2450.1329ms
+2026-03-27 19:10:37.124 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/products - null null
+2026-03-27 19:10:37.129 +05:00 [INF] Executing endpoint 'WebApi.Controllers.ProductController.GetAllAsync (WebApi)'
+2026-03-27 19:10:37.140 +05:00 [INF] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAsync() on controller WebApi.Controllers.ProductController (WebApi).
+2026-03-27 19:10:37.143 +05:00 [INF] Start in GetAllProducts
+2026-03-27 19:10:37.171 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Name", p."Price", p."QuantityInStock", p."CategoryId", c."Name" AS "CategoryName", p."SupplierId", s."Name" AS "SupplierName"
+FROM "Products" AS p
+INNER JOIN "Categories" AS c ON p."CategoryId" = c."Id"
+INNER JOIN "Suppliers" AS s ON p."SupplierId" = s."Id"
+2026-03-27 19:10:37.180 +05:00 [INF] Finish in GetAllProducts
+2026-03-27 19:10:37.183 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.DTOs.Products.GetProductDto, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-27 19:10:37.194 +05:00 [INF] Executed action WebApi.Controllers.ProductController.GetAllAsync (WebApi) in 52.5464ms
+2026-03-27 19:10:37.196 +05:00 [INF] Executed endpoint 'WebApi.Controllers.ProductController.GetAllAsync (WebApi)'
+2026-03-27 19:10:37.198 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/products - 200 null application/json; charset=utf-8 73.9504ms
+2026-03-27 19:10:48.635 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/sales - null null
+2026-03-27 19:10:48.641 +05:00 [INF] Executing endpoint 'WebApi.Controllers.SaleController.GetAllAsync (WebApi)'
+2026-03-27 19:10:48.653 +05:00 [INF] Route matched with {action = "GetAll", controller = "Sale"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAsync() on controller WebApi.Controllers.SaleController (WebApi).
+2026-03-27 19:10:48.662 +05:00 [INF] Start in GetAllSales
+2026-03-27 19:10:48.797 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."ProductId", p."Name" AS "ProductName", s."QuantitySold", s."SaleDate"
+FROM "Sales" AS s
+INNER JOIN "Products" AS p ON s."ProductId" = p."Id"
+2026-03-27 19:10:48.804 +05:00 [INF] Finish in GetAllSales
+2026-03-27 19:10:48.806 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.DTOs.Sales.GetSaleDto, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-27 19:10:48.812 +05:00 [INF] Executed action WebApi.Controllers.SaleController.GetAllAsync (WebApi) in 156.8358ms
+2026-03-27 19:10:48.815 +05:00 [INF] Executed endpoint 'WebApi.Controllers.SaleController.GetAllAsync (WebApi)'
+2026-03-27 19:10:48.816 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/sales - 200 null application/json; charset=utf-8 181.0678ms
+2026-03-27 19:19:32.900 +05:00 [INF] Application is shutting down...
+2026-03-27 19:19:39.957 +05:00 [INF] Now listening on: http://localhost:5252
+2026-03-27 19:19:39.982 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-27 19:19:39.984 +05:00 [INF] Hosting environment: Development
+2026-03-27 19:19:39.985 +05:00 [INF] Content root path: C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi
+2026-03-27 19:19:41.640 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.html - null null
+2026-03-27 19:19:41.880 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.html - 304 null null 244.3624ms
+2026-03-27 19:19:41.894 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - null null
+2026-03-27 19:19:41.894 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.css - null null
+2026-03-27 19:19:41.894 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.js - null null
+2026-03-27 19:19:41.894 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - null null
+2026-03-27 19:19:41.903 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - null null
+2026-03-27 19:19:41.916 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.js - 304 null null 22.3709ms
+2026-03-27 19:19:41.940 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - 304 null null 46.4218ms
+2026-03-27 19:19:41.940 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - 304 null null 36.9825ms
+2026-03-27 19:19:41.940 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.css - 304 null null 46.4566ms
+2026-03-27 19:19:41.941 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - 304 null null 47.2514ms
+2026-03-27 19:19:42.008 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - null null
+2026-03-27 19:19:42.011 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - null null
+2026-03-27 19:19:42.018 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - 304 null null 6.9846ms
+2026-03-27 19:19:42.226 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 218.2265ms
+2026-03-27 19:19:54.377 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/adjustments/history/productId=2 - null null
+2026-03-27 19:19:54.386 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-03-27 19:19:54.391 +05:00 [INF] Executing endpoint 'WebApi.Controllers.StockAdjustmentController.GetStockAdjustmentsHistory (WebApi)'
+2026-03-27 19:19:54.435 +05:00 [INF] Route matched with {action = "GetStockAdjustmentsHistory", controller = "StockAdjustment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStockAdjustmentsHistory(Int32) on controller WebApi.Controllers.StockAdjustmentController (WebApi).
+2026-03-27 19:19:55.552 +05:00 [INF] Start in GetStockAdjustmentsHistory
+2026-03-27 19:19:57.554 +05:00 [INF] Executed DbCommand (82ms) [Parameters=[@productId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."AdjustmentDate", s."AdjustmentAmount" AS "Amount", s."Reason"
+FROM "StockAdjustments" AS s
+WHERE s."ProductId" = @productId
+2026-03-27 19:19:57.598 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.DTOs.StockAdjustments.GetStockAdjustmentHistoryDto, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-27 19:19:57.643 +05:00 [INF] Executed action WebApi.Controllers.StockAdjustmentController.GetStockAdjustmentsHistory (WebApi) in 3193.8874ms
+2026-03-27 19:19:57.655 +05:00 [INF] Executed endpoint 'WebApi.Controllers.StockAdjustmentController.GetStockAdjustmentsHistory (WebApi)'
+2026-03-27 19:19:57.692 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/adjustments/history/productId=2 - 200 null application/json; charset=utf-8 3315.5154ms
+2026-03-27 19:20:01.071 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/adjustments/history/productId=1 - null null
+2026-03-27 19:20:01.076 +05:00 [INF] Executing endpoint 'WebApi.Controllers.StockAdjustmentController.GetStockAdjustmentsHistory (WebApi)'
+2026-03-27 19:20:01.077 +05:00 [INF] Route matched with {action = "GetStockAdjustmentsHistory", controller = "StockAdjustment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStockAdjustmentsHistory(Int32) on controller WebApi.Controllers.StockAdjustmentController (WebApi).
+2026-03-27 19:20:01.084 +05:00 [INF] Start in GetStockAdjustmentsHistory
+2026-03-27 19:20:01.158 +05:00 [INF] Executed DbCommand (10ms) [Parameters=[@productId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."AdjustmentDate", s."AdjustmentAmount" AS "Amount", s."Reason"
+FROM "StockAdjustments" AS s
+WHERE s."ProductId" = @productId
+2026-03-27 19:20:01.194 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.DTOs.StockAdjustments.GetStockAdjustmentHistoryDto, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-27 19:20:01.205 +05:00 [INF] Executed action WebApi.Controllers.StockAdjustmentController.GetStockAdjustmentsHistory (WebApi) in 124.9554ms
+2026-03-27 19:20:01.209 +05:00 [INF] Executed endpoint 'WebApi.Controllers.StockAdjustmentController.GetStockAdjustmentsHistory (WebApi)'
+2026-03-27 19:20:01.212 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/adjustments/history/productId=1 - 200 null application/json; charset=utf-8 140.7338ms
+2026-03-27 19:20:34.081 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/adjustments/history/productId=4 - null null
+2026-03-27 19:20:34.085 +05:00 [INF] Executing endpoint 'WebApi.Controllers.StockAdjustmentController.GetStockAdjustmentsHistory (WebApi)'
+2026-03-27 19:20:34.087 +05:00 [INF] Route matched with {action = "GetStockAdjustmentsHistory", controller = "StockAdjustment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStockAdjustmentsHistory(Int32) on controller WebApi.Controllers.StockAdjustmentController (WebApi).
+2026-03-27 19:20:34.098 +05:00 [INF] Start in GetStockAdjustmentsHistory
+2026-03-27 19:20:34.259 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@productId='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."AdjustmentDate", s."AdjustmentAmount" AS "Amount", s."Reason"
+FROM "StockAdjustments" AS s
+WHERE s."ProductId" = @productId
+2026-03-27 19:20:34.263 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Domain.DTOs.StockAdjustments.GetStockAdjustmentHistoryDto, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-27 19:20:34.266 +05:00 [INF] Executed action WebApi.Controllers.StockAdjustmentController.GetStockAdjustmentsHistory (WebApi) in 176.0292ms
+2026-03-27 19:20:34.268 +05:00 [INF] Executed endpoint 'WebApi.Controllers.StockAdjustmentController.GetStockAdjustmentsHistory (WebApi)'
+2026-03-27 19:20:34.271 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/adjustments/history/productId=4 - 200 null application/json; charset=utf-8 190.6428ms
+2026-03-27 19:49:16.656 +05:00 [INF] Application is shutting down...
+2026-03-27 19:49:29.912 +05:00 [INF] Now listening on: http://localhost:5252
+2026-03-27 19:49:29.936 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-27 19:49:29.937 +05:00 [INF] Hosting environment: Development
+2026-03-27 19:49:29.938 +05:00 [INF] Content root path: C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi
+2026-03-27 19:49:33.983 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.html - null null
+2026-03-27 19:49:34.044 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.html - 304 null null 62.2738ms
+2026-03-27 19:49:34.067 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - null null
+2026-03-27 19:49:34.067 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.css - null null
+2026-03-27 19:49:34.069 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - null null
+2026-03-27 19:49:34.087 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-bundle.js - 304 null null 18.5994ms
+2026-03-27 19:49:34.087 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui.css - 304 null null 20.4016ms
+2026-03-27 19:49:34.087 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.css - 304 null null 19.8591ms
+2026-03-27 19:49:34.095 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - null null
+2026-03-27 19:49:34.104 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/index.js - null null
+2026-03-27 19:49:34.105 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/swagger-ui-standalone-preset.js - 304 null null 9.2711ms
+2026-03-27 19:49:34.107 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/index.js - 304 null null 3.4513ms
+2026-03-27 19:49:34.270 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - null null
+2026-03-27 19:49:34.303 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - null null
+2026-03-27 19:49:34.305 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/favicon-32x32.png - 304 null null 1.9085ms
+2026-03-27 19:49:34.348 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 77.48ms
+2026-03-27 19:50:05.630 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/products/details/1 - null null
+2026-03-27 19:50:05.639 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-03-27 19:50:05.645 +05:00 [INF] Executing endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:50:05.679 +05:00 [INF] Route matched with {action = "GetProductsDetails", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductsDetails(Int32) on controller WebApi.Controllers.ProductController (WebApi).
+2026-03-27 19:50:05.861 +05:00 [INF] Start in GetProductsDetails
+2026-03-27 19:50:07.456 +05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-03-27 19:50:07.969 +05:00 [INF] Executed DbCommand (99ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s2."Id", s2."CategoryId", s2."Name", s2."Price", s2."QuantityInStock", s2."SupplierId", s2."Id0", s2."Name0", s2."Id1", s0."Id", s0."ProductId", s0."QuantitySold", s0."SaleDate", s2."Name1", s2."Phone", s1."Id", s1."AdjustmentAmount", s1."AdjustmentDate", s1."ProductId", s1."Reason"
+FROM (
+    SELECT p."Id", p."CategoryId", p."Name", p."Price", p."QuantityInStock", p."SupplierId", c."Id" AS "Id0", c."Name" AS "Name0", s."Id" AS "Id1", s."Name" AS "Name1", s."Phone"
+    FROM "Products" AS p
+    INNER JOIN "Categories" AS c ON p."CategoryId" = c."Id"
+    INNER JOIN "Suppliers" AS s ON p."SupplierId" = s."Id"
+    WHERE p."Id" = @id
+    LIMIT 1
+) AS s2
+LEFT JOIN "Sales" AS s0 ON s2."Id" = s0."ProductId"
+LEFT JOIN "StockAdjustments" AS s1 ON s2."Id" = s1."ProductId"
+ORDER BY s2."Id", s2."Id0", s2."Id1", s0."Id"
+2026-03-27 19:50:08.290 +05:00 [INF] Executing OkObjectResult, writing value of type 'Domain.DTOs.Products.GetProductDetailDto'.
+2026-03-27 19:50:08.343 +05:00 [INF] Executed action WebApi.Controllers.ProductController.GetProductsDetails (WebApi) in 2655.9039ms
+2026-03-27 19:50:08.347 +05:00 [INF] Executed endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:50:08.363 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/products/details/1 - 200 null application/json; charset=utf-8 2733.002ms
+2026-03-27 19:51:12.296 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/products/details/2 - null null
+2026-03-27 19:51:12.304 +05:00 [INF] Executing endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:51:12.306 +05:00 [INF] Route matched with {action = "GetProductsDetails", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductsDetails(Int32) on controller WebApi.Controllers.ProductController (WebApi).
+2026-03-27 19:51:12.311 +05:00 [INF] Start in GetProductsDetails
+2026-03-27 19:51:12.351 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s2."Id", s2."CategoryId", s2."Name", s2."Price", s2."QuantityInStock", s2."SupplierId", s2."Id0", s2."Name0", s2."Id1", s0."Id", s0."ProductId", s0."QuantitySold", s0."SaleDate", s2."Name1", s2."Phone", s1."Id", s1."AdjustmentAmount", s1."AdjustmentDate", s1."ProductId", s1."Reason"
+FROM (
+    SELECT p."Id", p."CategoryId", p."Name", p."Price", p."QuantityInStock", p."SupplierId", c."Id" AS "Id0", c."Name" AS "Name0", s."Id" AS "Id1", s."Name" AS "Name1", s."Phone"
+    FROM "Products" AS p
+    INNER JOIN "Categories" AS c ON p."CategoryId" = c."Id"
+    INNER JOIN "Suppliers" AS s ON p."SupplierId" = s."Id"
+    WHERE p."Id" = @id
+    LIMIT 1
+) AS s2
+LEFT JOIN "Sales" AS s0 ON s2."Id" = s0."ProductId"
+LEFT JOIN "StockAdjustments" AS s1 ON s2."Id" = s1."ProductId"
+ORDER BY s2."Id", s2."Id0", s2."Id1", s0."Id"
+2026-03-27 19:51:12.357 +05:00 [INF] Executed action WebApi.Controllers.ProductController.GetProductsDetails (WebApi) in 48.2346ms
+2026-03-27 19:51:12.360 +05:00 [INF] Executed endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:51:12.362 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Collections.Generic.KeyNotFoundException: Product not found
+   at Infrastructure.Services.ProductService.GetProductsDetails(Int32 id) in C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\Infrastructure\Services\ProductService.cs:line 252
+   at WebApi.Controllers.ProductController.GetProductsDetails(Int32 id) in C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi\Controllers\ProductController.cs:line 87
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-03-27 19:51:12.390 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/products/details/2 - 500 null text/plain; charset=utf-8 94.4061ms
+2026-03-27 19:51:15.276 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/products/details/1 - null null
+2026-03-27 19:51:15.280 +05:00 [INF] Executing endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:51:15.283 +05:00 [INF] Route matched with {action = "GetProductsDetails", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductsDetails(Int32) on controller WebApi.Controllers.ProductController (WebApi).
+2026-03-27 19:51:15.295 +05:00 [INF] Start in GetProductsDetails
+2026-03-27 19:51:15.425 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s2."Id", s2."CategoryId", s2."Name", s2."Price", s2."QuantityInStock", s2."SupplierId", s2."Id0", s2."Name0", s2."Id1", s0."Id", s0."ProductId", s0."QuantitySold", s0."SaleDate", s2."Name1", s2."Phone", s1."Id", s1."AdjustmentAmount", s1."AdjustmentDate", s1."ProductId", s1."Reason"
+FROM (
+    SELECT p."Id", p."CategoryId", p."Name", p."Price", p."QuantityInStock", p."SupplierId", c."Id" AS "Id0", c."Name" AS "Name0", s."Id" AS "Id1", s."Name" AS "Name1", s."Phone"
+    FROM "Products" AS p
+    INNER JOIN "Categories" AS c ON p."CategoryId" = c."Id"
+    INNER JOIN "Suppliers" AS s ON p."SupplierId" = s."Id"
+    WHERE p."Id" = @id
+    LIMIT 1
+) AS s2
+LEFT JOIN "Sales" AS s0 ON s2."Id" = s0."ProductId"
+LEFT JOIN "StockAdjustments" AS s1 ON s2."Id" = s1."ProductId"
+ORDER BY s2."Id", s2."Id0", s2."Id1", s0."Id"
+2026-03-27 19:51:15.432 +05:00 [INF] Executing OkObjectResult, writing value of type 'Domain.DTOs.Products.GetProductDetailDto'.
+2026-03-27 19:51:15.434 +05:00 [INF] Executed action WebApi.Controllers.ProductController.GetProductsDetails (WebApi) in 149.3036ms
+2026-03-27 19:51:15.436 +05:00 [INF] Executed endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:51:15.438 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/products/details/1 - 200 null application/json; charset=utf-8 161.275ms
+2026-03-27 19:54:20.456 +05:00 [INF] Application is shutting down...
+2026-03-27 19:54:24.976 +05:00 [INF] Now listening on: http://localhost:5252
+2026-03-27 19:54:25.000 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-27 19:54:25.001 +05:00 [INF] Hosting environment: Development
+2026-03-27 19:54:25.002 +05:00 [INF] Content root path: C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi
+2026-03-27 19:54:28.377 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/products/details/1 - null null
+2026-03-27 19:54:28.499 +05:00 [WRN] Failed to determine the https port for redirect.
+2026-03-27 19:54:28.508 +05:00 [INF] Executing endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:54:28.574 +05:00 [INF] Route matched with {action = "GetProductsDetails", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductsDetails(Int32) on controller WebApi.Controllers.ProductController (WebApi).
+2026-03-27 19:54:28.803 +05:00 [INF] Start in GetProductsDetails
+2026-03-27 19:54:30.841 +05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2026-03-27 19:54:31.404 +05:00 [INF] Executed DbCommand (91ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s2."Id", s2."CategoryId", s2."Name", s2."Price", s2."QuantityInStock", s2."SupplierId", s2."Id0", s2."Name0", s2."Id1", s0."Id", s0."ProductId", s0."QuantitySold", s0."SaleDate", s2."Name1", s2."Phone", s1."Id", s1."AdjustmentAmount", s1."AdjustmentDate", s1."ProductId", s1."Reason"
+FROM (
+    SELECT p."Id", p."CategoryId", p."Name", p."Price", p."QuantityInStock", p."SupplierId", c."Id" AS "Id0", c."Name" AS "Name0", s."Id" AS "Id1", s."Name" AS "Name1", s."Phone"
+    FROM "Products" AS p
+    INNER JOIN "Categories" AS c ON p."CategoryId" = c."Id"
+    INNER JOIN "Suppliers" AS s ON p."SupplierId" = s."Id"
+    WHERE p."Id" = @id
+    LIMIT 1
+) AS s2
+LEFT JOIN "Sales" AS s0 ON s2."Id" = s0."ProductId"
+LEFT JOIN "StockAdjustments" AS s1 ON s2."Id" = s1."ProductId"
+ORDER BY s2."Id", s2."Id0", s2."Id1", s0."Id"
+2026-03-27 19:54:31.623 +05:00 [INF] Executing OkObjectResult, writing value of type 'Domain.DTOs.Products.GetProductDetailDto'.
+2026-03-27 19:54:31.703 +05:00 [INF] Executed action WebApi.Controllers.ProductController.GetProductsDetails (WebApi) in 3115.1287ms
+2026-03-27 19:54:31.717 +05:00 [INF] Executed endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:54:31.743 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/products/details/1 - 200 null application/json; charset=utf-8 3369.4945ms
+2026-03-27 19:54:33.059 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/products/details/2 - null null
+2026-03-27 19:54:33.069 +05:00 [INF] Executing endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:54:33.071 +05:00 [INF] Route matched with {action = "GetProductsDetails", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductsDetails(Int32) on controller WebApi.Controllers.ProductController (WebApi).
+2026-03-27 19:54:33.078 +05:00 [INF] Start in GetProductsDetails
+2026-03-27 19:54:33.146 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s2."Id", s2."CategoryId", s2."Name", s2."Price", s2."QuantityInStock", s2."SupplierId", s2."Id0", s2."Name0", s2."Id1", s0."Id", s0."ProductId", s0."QuantitySold", s0."SaleDate", s2."Name1", s2."Phone", s1."Id", s1."AdjustmentAmount", s1."AdjustmentDate", s1."ProductId", s1."Reason"
+FROM (
+    SELECT p."Id", p."CategoryId", p."Name", p."Price", p."QuantityInStock", p."SupplierId", c."Id" AS "Id0", c."Name" AS "Name0", s."Id" AS "Id1", s."Name" AS "Name1", s."Phone"
+    FROM "Products" AS p
+    INNER JOIN "Categories" AS c ON p."CategoryId" = c."Id"
+    INNER JOIN "Suppliers" AS s ON p."SupplierId" = s."Id"
+    WHERE p."Id" = @id
+    LIMIT 1
+) AS s2
+LEFT JOIN "Sales" AS s0 ON s2."Id" = s0."ProductId"
+LEFT JOIN "StockAdjustments" AS s1 ON s2."Id" = s1."ProductId"
+ORDER BY s2."Id", s2."Id0", s2."Id1", s0."Id"
+2026-03-27 19:54:33.156 +05:00 [INF] Executed action WebApi.Controllers.ProductController.GetProductsDetails (WebApi) in 81.1528ms
+2026-03-27 19:54:33.160 +05:00 [INF] Executed endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:54:33.165 +05:00 [INF] Error in Server
+System.Collections.Generic.KeyNotFoundException: Product not found
+   at Infrastructure.Services.ProductService.GetProductsDetails(Int32 id) in C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\Infrastructure\Services\ProductService.cs:line 252
+   at WebApi.Controllers.ProductController.GetProductsDetails(Int32 id) in C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi\Controllers\ProductController.cs:line 87
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at WebApi.Middleware.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\Ismoil\OneDrive\Desktop\Programming\.Net\month1\week3\ManagementSystemExam\WebApi\Middleware\GlobalExceptionMiddleware.cs:line 22
+2026-03-27 19:54:33.249 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/products/details/2 - 404 null application/json 190.9439ms
+2026-03-27 19:55:18.805 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5252/api/products/details/1 - null null
+2026-03-27 19:55:18.816 +05:00 [INF] Executing endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:55:18.819 +05:00 [INF] Route matched with {action = "GetProductsDetails", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductsDetails(Int32) on controller WebApi.Controllers.ProductController (WebApi).
+2026-03-27 19:55:18.827 +05:00 [INF] Start in GetProductsDetails
+2026-03-27 19:55:19.002 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s2."Id", s2."CategoryId", s2."Name", s2."Price", s2."QuantityInStock", s2."SupplierId", s2."Id0", s2."Name0", s2."Id1", s0."Id", s0."ProductId", s0."QuantitySold", s0."SaleDate", s2."Name1", s2."Phone", s1."Id", s1."AdjustmentAmount", s1."AdjustmentDate", s1."ProductId", s1."Reason"
+FROM (
+    SELECT p."Id", p."CategoryId", p."Name", p."Price", p."QuantityInStock", p."SupplierId", c."Id" AS "Id0", c."Name" AS "Name0", s."Id" AS "Id1", s."Name" AS "Name1", s."Phone"
+    FROM "Products" AS p
+    INNER JOIN "Categories" AS c ON p."CategoryId" = c."Id"
+    INNER JOIN "Suppliers" AS s ON p."SupplierId" = s."Id"
+    WHERE p."Id" = @id
+    LIMIT 1
+) AS s2
+LEFT JOIN "Sales" AS s0 ON s2."Id" = s0."ProductId"
+LEFT JOIN "StockAdjustments" AS s1 ON s2."Id" = s1."ProductId"
+ORDER BY s2."Id", s2."Id0", s2."Id1", s0."Id"
+2026-03-27 19:55:19.011 +05:00 [INF] Executing OkObjectResult, writing value of type 'Domain.DTOs.Products.GetProductDetailDto'.
+2026-03-27 19:55:19.015 +05:00 [INF] Executed action WebApi.Controllers.ProductController.GetProductsDetails (WebApi) in 193.7333ms
+2026-03-27 19:55:19.018 +05:00 [INF] Executed endpoint 'WebApi.Controllers.ProductController.GetProductsDetails (WebApi)'
+2026-03-27 19:55:19.021 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5252/api/products/details/1 - 200 null application/json; charset=utf-8 215.4757ms
+2026-03-27 20:00:56.526 +05:00 [INF] Application is shutting down...
