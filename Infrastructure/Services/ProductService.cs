@@ -196,4 +196,42 @@ public class ProductService : IProductService
             throw;
         }
     }
+
+    public async Task<List<GetProductLowStock>> GetProductsLowStock()
+    {
+        _logger.LogInformation("Start in GetProductsLowStock");
+
+        var products = await _context.Products
+        .Where(p => p.QuantityInStock < 5)
+        .Select(p => new GetProductLowStock
+        {
+            Id = p.Id,
+            Name = p.Name,
+            QuantityInStock = p.QuantityInStock
+        }).ToListAsync();
+
+        _logger.LogInformation("Finish in GetProductsLowStock");
+        return products;
+    }
+
+    public async Task<GetProductStatistic> GetProductsStatistics()
+    {
+        _logger.LogInformation("Start in GetProductsStatistics");
+
+        var totalProducts = await _context.Products.CountAsync();
+
+        var averagePrice = await _context.Products.AverageAsync(p => p.Price);
+
+        var totalSold = await _context.Sales.SumAsync(s => s.QuantitySold);
+
+        var product = new GetProductStatistic
+        {
+            TotalProducts = totalProducts,
+            AveragePrice = averagePrice,
+            TotalSold = totalProducts
+        };
+
+        _logger.LogInformation("Finish in GetProductsStatistics");
+        return product;
+    }
 }

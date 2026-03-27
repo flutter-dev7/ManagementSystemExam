@@ -65,4 +65,20 @@ public class SaleController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpGet("by-date/fromdate={fromDate:datetime}&toDate={toDate:datetime}")]
+    public async Task<IActionResult> GetSalesByDate(DateTime fromDate, DateTime toDate)
+    {
+        var sales = await _service.GetSalesByDate(fromDate, toDate);
+
+        return Ok(sales);
+    }
+
+    [HttpGet("top-products")]
+    public  async Task<IActionResult> GetTopProducts()
+    {
+        var sales = await _service.GetTopProducts();
+
+        return Ok(sales);
+    }
 }

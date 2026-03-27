@@ -64,4 +64,12 @@ public class CategoryController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpGet("with-products")]
+    public async Task<IActionResult> GetCategoriesWithProducts()
+    {
+        var categories = await _service.GetCategoriesWithProducts();
+
+        return Ok(categories);
+    }
 }

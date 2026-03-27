@@ -171,4 +171,39 @@ public class SaleService : ISaleService
             throw;
         }
     }
+
+    public async Task<IEnumerable<GetSaleByDateDto>> GetSalesByDate(DateTime fromDate, DateTime toDate)
+    {
+        _logger.LogInformation("Start in GetSalesByDate from {fromDate} to {toDate}", fromDate, toDate);
+
+        var sales = await _context.Sales
+        .Where(s => s.SaleDate >= fromDate && s.SaleDate <= toDate)
+        .Select(s => new GetSaleByDateDto
+        {
+            SaleId = s.Id,
+            ProductName = s.Product.Name,
+            QuantitySold = s.QuantitySold,
+            SaleDate = s.SaleDate
+        }).ToListAsync();
+
+        _logger.LogInformation("Finish in GetSalesByDate from {fromDate} to {toDate}", fromDate, toDate);
+        return sales;
+    }
+
+    public async Task<IEnumerable<GetTopProductDto>> GetTopProducts()
+    {
+        _logger.LogInformation("Start in GetTopProducts");
+
+        var sales = await _context.Sales
+        .GroupBy(s => s.Product.Name)
+        .Select(s => new GetTopProductDto
+        {
+            ProductName = s.Key,
+            TotalSold = s.Sum(t => t.QuantitySold)
+        }).
+        OrderByDescending(t => t.TotalSold)
+        .ToListAsync();
+
+        return sales;
+    }
 }

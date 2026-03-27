@@ -64,4 +64,20 @@ public class ProductController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpGet("low-stock")]
+    public async Task<IActionResult> GetProductsLowStock()
+    {
+        var products = await _service.GetProductsLowStock();
+
+        return Ok(products);
+    }
+
+    [HttpGet("statistics")]
+    public async Task<IActionResult> GetProductsStatistics()
+    {
+        var product = await _service.GetProductsStatistics();
+
+        return Ok(product);
+    }
 }

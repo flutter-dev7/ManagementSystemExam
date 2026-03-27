@@ -1,5 +1,6 @@
 using System;
 using Domain.DTOs.Categories;
+using Domain.DTOs.Products;
 using Domain.Entities;
 using Infrastructure.Data;
 using Infrastructure.Interfaces;
@@ -137,5 +138,26 @@ public class CategoryService : ICategoryService
             _logger.LogError(ex, "Error in DeleteCategory with Id = {Id}", id);
             throw;
         }
+    }
+
+    public async Task<IEnumerable<GetCategoryWithProductsDto>> GetCategoriesWithProducts()
+    {
+        _logger.LogInformation("Start in GetCategoriesWithProducts");
+
+        var categories = await _context.Categories
+        .Select(c => new GetCategoryWithProductsDto
+        {
+            CategoryId = c.Id,
+            CategoryName = c.Name,
+            Products =  c.Products
+            .Select(p => new GetProductInCategoryDto
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Price = p.Price
+            }).ToList()
+        }).ToListAsync();
+
+        return categories;
     }
 }

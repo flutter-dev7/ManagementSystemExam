@@ -11,4 +11,6 @@ public interface ICategoryService
     Task<bool> CreateCategoryAsync(CreateCategoryDto request);
     Task<bool> UpdateCategoryAsync(int id, UpdateCategoryDto request);
     Task<bool> DeleteCategoryAsync(int id);
+
+    Task<IEnumerable<GetCategoryWithProductsDto>> GetCategoriesWithProducts();
 }
